@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background: url('night-sky-with-planets-galaxies-scene-generative-ai.jpg') no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #clock {
+            font-size: 5rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            background: linear-gradient(to right, #db4e65e1, #091923e5);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+        }
+
+        #clock:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">8:10:45</div>
+
+    <script>
+        // Calling showTime function at every second
+        setInterval(showTime, 1000);
+
+        // Defining showTime function
+        function showTime() {
+            // Getting current time and date
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            am_pm = "AM";
+
+            // Setting time for 12 Hrs format
+            if (hour >= 12) {
+                if (hour > 12) hour -= 12;
+                am_pm = "PM";
+            } else if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+
+            hour =hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            let currentTime = hour + ":" + min + ":" + sec + am_pm;
+
+            // Displaying the time
+            document.getElementById("clock").innerHTML = currentTime;
+        }
+
+        showTime();
+    </script>
+</body>
+</html>
